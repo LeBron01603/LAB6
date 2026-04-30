@@ -1,0 +1,369 @@
+/* ============================================================
+   TO-DO APP — style.css
+   Estética: Brutalismo editorial · tipografía de impacto
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;700&display=swap');
+
+/* ---------- RESET & BASE ---------- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:         #f5f0e8;
+  --ink:        #1a1a1a;
+  --accent:     #e63946;
+  --accent2:    #2b9348;
+  --muted:      #8a8070;
+  --border:     #1a1a1a;
+  --card-bg:    #ffffff;
+  --done-color: #2b9348;
+  --shadow:     4px 4px 0px var(--ink);
+  --radius:     0px;
+}
+
+body {
+  background: var(--bg);
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(26,26,26,0.06) 39px,
+      rgba(26,26,26,0.06) 40px
+    );
+  min-height: 100vh;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  padding: 2rem 1rem 4rem;
+}
+
+/* ---------- WRAPPER ---------- */
+.app-wrapper {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ---------- HEADER ---------- */
+.app-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.label-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 3px 10px;
+  margin-bottom: 0.5rem;
+}
+
+.app-header h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 6rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.subtitle {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- INPUT SECTION ---------- */
+.input-section {
+  margin-bottom: 1.5rem;
+}
+
+.input-row {
+  display: flex;
+  gap: 0;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+#taskInput {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: var(--card-bg);
+  color: var(--ink);
+  border-right: 2px solid var(--border);
+}
+
+#taskInput::placeholder { color: var(--muted); font-style: italic; }
+
+#addBtn {
+  padding: 0 1.4rem;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+#addBtn:hover { background: var(--accent); }
+#addBtn:active { transform: translate(2px, 2px); }
+
+.error-msg {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin-top: 0.5rem;
+  min-height: 1.1rem;
+  padding-left: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* ---------- COUNTER SECTION ---------- */
+.counter-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 1.5rem;
+  border: 2px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.counter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.5rem;
+  background: var(--accent);
+  border-right: 2px solid var(--border);
+}
+
+.counter-box:last-child { border-right: none; }
+
+.counter-box.secondary {
+  background: var(--bg);
+}
+
+.counter-box.done-box {
+  background: var(--done-color);
+}
+
+.counter-box span:first-child {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.8rem;
+  line-height: 1;
+  color: var(--card-bg);
+}
+
+.counter-box.secondary span:first-child { color: var(--ink); }
+
+.counter-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  margin-top: 2px;
+}
+
+.counter-box.secondary .counter-label { color: var(--muted); }
+
+.filters {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.2rem;
+}
+
+.filter-btn {
+  flex: 1;
+  padding: 0.55rem 0;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-right: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+}
+
+.filter-btn:last-child { border-right: 2px solid var(--border); }
+.filter-btn:hover { background: var(--bg); color: var(--ink); }
+
+.filter-btn.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ---------- TASK LIST ---------- */
+.task-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ---------- TASK ITEM ---------- */
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  border-bottom: none;
+  transition: background 0.2s;
+  animation: slideIn 0.25s ease;
+}
+
+.task-item:last-child { border-bottom: 2px solid var(--border); }
+
+.task-item.done {
+  background: #f0f7f1;
+}
+
+.task-item.hidden {
+  display: none;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.check-area {
+  flex-shrink: 0;
+  width: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  align-self: stretch;
+  border-right: 2px solid var(--border);
+  transition: background 0.15s;
+}
+
+.check-area:hover { background: #f0f7f1; }
+
+.check-area input[type="checkbox"] { display: none; }
+
+.checkmark {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--border);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.task-item.done .checkmark {
+  background: var(--done-color);
+  border-color: var(--done-color);
+  color: white;
+}
+
+/* Task text */
+.task-text {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  font-size: 0.97rem;
+  line-height: 1.4;
+  word-break: break-word;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.delete-btn {
+  flex-shrink: 0;
+  width: 48px;
+  align-self: stretch;
+  background: transparent;
+  border: none;
+  border-left: 2px solid var(--border);
+  cursor: pointer;
+  font-size: 1rem;
+  color: var(--muted);
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  border: 2px dashed var(--muted);
+  margin-top: 0;
+  display: none;
+}
+
+.empty-state.visible { display: block; }
+
+.empty-icon { font-size: 2.5rem; display: block; margin-bottom: 0.75rem; }
+
+.empty-state p {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ---------- BOTTOM BAR ---------- */
+.bottom-bar {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.clear-btn {
+  padding: 0.5rem 1.2rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  background: transparent;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  color: var(--muted);
+  transition: all 0.15s;
+  box-shadow: 3px 3px 0 var(--border);
+}
+
+.clear-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: none;
+  transform: translate(3px, 3px);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 420px) {
+  .counter-section { grid-template-columns: 1fr; }
+  .counter-box { border-right: none; border-bottom: 2px solid var(--border); flex-direction: row; gap: 0.75rem; }
+  .counter-box:last-child { border-bottom: none; }
+}
